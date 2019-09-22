@@ -2,7 +2,7 @@
 ## How to run site
 1. Clone repo
 
-2. Created virtualenv
+2. Create virtualenv
 
 `virtualenv --python=/usr/bin/python3.6 venv`
 
@@ -10,7 +10,7 @@
 
 `source ./venv/bin/activate`
 
-4. Installed project requirements
+4. Install project requirements
 
 `pip install -r requirements.txt`
 
