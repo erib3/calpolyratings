@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load teacher_profile_filters %}
+
+{% block includes %}
+<link rel="stylesheet" href="{% static 'home/css/search.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/list.css' %}">
+<link rel='stylesheet' href="{% static 'teacher_profile/css/teacher_profile.css' %}">
+<link rel='stylesheet' href="{% static 'postings/css/posts.css' %}">
+{% endblock %}
+{% block title %}
+  {{profile.full_name}}
+{% endblock %}
+
+{% block content %}
+<div class="container cont-list" id="teacher_list" style="padding-bottom: 10px;">
+  <br>
+
+  <button type="button" class="btn btn-outline-secondary profile-btn teacher-btn" style="pointer-events:none;"> <span class='teacher-rating'>{{profile.overall_rating | toLetterGrade}}</span>{{profile.first_name}} {{profile.last_name}}<small><ul class='btn-stack'><li class='btn-stack-list-style'><span class='evals-span'>{{profile.overall_difficulty|formatDifficultyGrade}}</span><span style="visibility: hidden">{{profile.department}}</span></li></ul></small>
+  <small><ul class='btn-stack'><li class='btn-stack-list-style'><span class='evals-span'><strong>{{profile.evaluations}}</strong> eval{{ profile.evaluations|pluralize }}</span><span>{{profile.department}}</span></li></ul></small>
+  </button>
+
+
+  <a href='post/'><btn class="btn btn-block btn-dark"> Add Post </btn></a>
+  
+  <div style="margin-top: 10px;">
+	  <select id='course-filter' class="form-control" name="course-filter" style='width: 134px;display:inline-block;margin-top:10px;'>
+	          <option id='all' selected value='fullpostmode'>All courses</option>
+		  {% for c in courses %}
+		    <option value="{{c.slug}}"> {{ c|capfirst }} </option>
+		  {% endfor %}
+
+	  </select>
+	<div id='nice-mode-div' style="
+    		float:  right;
+    		width: 154px;
+		"><p id='nice-mode-label'>Compact</p>
+ 	 <input type="checkbox" name="my-checkbox" id='my-checkbox'>
+	</div>
+  </div>
+
+  <div class="container-fluid" style="margin-top: 25px;" id='postings'>
+	{% include 'teacher_profile/post_snippet.html' %}
+  </div>
+</div>
+
+<!-- nicetext vs fullpost toggler (??) -->
+<input type="hidden" name="mode" id='mode' value=0>
+
+
+
+<script>
+ 
+  function append_data(url, counter) {
+    $.get(url, {start: counter}, function(data){
+      $('#more-posts-div').replaceWith(data);
+    })
+  }
+
+  function replace_data(url, counter) {
+    $.get(url, {start: counter}, function(data){
+      $('#postings').html(data);
+    })
+  } 
+
+  
+  $(document).ready(function(){
+    // counter for ajax queryset indices
+    var counter = 10;
+	
+    //create bootstrap switch ui component
+    $("[name='my-checkbox']").bootstrapSwitch();
+
+    //on the switch changing, toggle between full posts and nice text
+    $('#my-checkbox').on('switchChange.bootstrapSwitch', function (event, state) {
+       	
+      counter=0;
+      if (state == true) {
+	$('#course-filter').css({visibility:"hidden"});   
+        $('#mode').val(1);
+        replace_data('./compacttextmode/', counter);
+      }
+
+      else if (state == false) {
+      	$('#course-filter').css({visibility:"visible"});
+      	$('#course-filter').val('fullpostmode');
+        $('#mode').val(0);
+	replace_data('./fullpostmode/', counter);
+      }
+      counter += 10;
+    });
+
+    $('#course-filter').on('change', function() {
+      counter = 0; 
+      $('#more-posts').show();
+      $('#mode').val(2);
+      replace_data('./' + $('#course-filter').val()+'/', counter)
+      counter += 10;
+     });
+
+    $('#postings').on('click', '#more-posts', function() {
+
+	switch	($('#mode').val()) {
+	case '0':
+		append_data('./fullpostmode', counter);
+		counter += 10;
+		break;
+
+	case '1':
+		append_data('./compacttextmode', counter);
+		counter += 10;
+		break;
+
+	case '2': 
+		append_data('./' + $('#course-filter').val(), counter);
+		counter += 10;
+		break;
+
+	}
+	});
+ 
+});
+</script>
+
+
+
+{% endblock %}
+
+
+

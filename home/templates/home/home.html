@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load teacher_profile_filters %}
+{% load staticfiles %}
+
+{% block includes %}
+<link rel="stylesheet" href="{% static 'home/css/search.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/list.css' %}">
+
+{% endblock %}
+{% block content %}
+
+<div class='container-fluid'>
+  <form class="form-signin" method='get' action='/' >
+    <div class="row">
+      <div class="col-xs-9 mobile-stuff" style="padding-left: 0px;padding-right: 0px;">
+        <input type="text" name='q' id="id_search" class="form-control"  style="min-width:170px;border-radius: .25rem 0rem 0rem .25rem;" required autofocus>
+      </div>
+      <div class="col-xs-3" style="padding-left: 0px;padding-right: 0px;">
+        <button class="btn btn-dark" id='search-btn' type="submit" style="border-radius: 0rem .25rem .25rem 0rem;">Search</button>
+      </div>
+    </div>
+
+
+  </form>
+</div>
+
+<div class='container-fluid'>
+  <form class="form-signin" method='get' action='' style='padding-top: 0px;'>
+
+    <div class="row">
+	<div class="col-sm-12">
+	<span style="
+       	/* margin-top: 50px; */
+    	padding-left: 66px;
+    	padding-top: 8px;
+    	display: inline-block;
+	">Department</span>
+        <select id="dpt-options" class="form-control" name="options" style="width: 100px;float: right;">
+          {% if selection %}
+            <option selected value='{{selection.slug}}'> {{selection.abbreviation|capfirst }} </option>
+            <option value='all'>All</option>
+          {% else %}
+            <option selected value='all'>All</option>
+	  {% endif %}
+
+	  {% for c in departments %}
+            <option value="{{c.slug}}"> {{ c.abbreviation|capfirst }} </option>
+          {% endfor %}
+
+        </select>
+	</div>
+      </div>
+
+      </select>
+    </div>
+
+
+  </form>
+</div>
+<div class="container cont-list" id="teacher_list" style="padding-bottom: 5px;">
+  <br>
+
+  <div id='small-teacher-profile-list-block'>
+  {% if teacher_profiles %}
+    {% for profile in teacher_profiles %}
+      <a href=/{{profile.slug}} style='text-decoration: none;'><button type="button" class="btn btn-outline-secondary teacher-btn" style="border-left-width: 9px;"> <span class='teacher-rating'>{{profile.overall_rating | toLetterGrade}}</span>{{profile.first_name}} {{profile.last_name}}<small><ul class='btn-stack'><li class='btn-stack-list-style'><span><span class='evals-span'><strong>{{profile.evaluations}}</strong> eval{{ profile.evaluations|pluralize }}</span>{{profile.department}}</span></li></ul></small></button></a>
+
+    {% endfor %}
+  {% else %}
+      <h4>There are no teachers at the moment</h4>
+  {% endif %}
+  </div>
+</div>
+
+
+<div class="pagination" style="margin-top: 15px;">
+    <span style="width:  100%;text-align:  center;">
+        {% if is_paginated %}
+          {% if page_obj.has_previous %}
+    	    <a href="?page={{ page_obj.previous_page_number }}"><button class="btn btn-outline-secondary btn-sm btn-page"><img class='page-arrow' src="{% static 'core/img/arrow-left.svg' %}" alt="left-arrow"></img></button></a> 
+          {% else %}
+    	    <button class="btn btn-outline-secondary disabled btn-sm btn-page" style='pointer-events:none;'><img class='page-arrow' src="{% static 'core/img/arrow-left.svg' %}" alt="left-arrow"></img></button></a> 
+          {% endif %}
+
+	  <p style="display:inline-block;margin-bottom:0px;padding-right:10px;padding-left:10px;">
+          {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+	  </p>
+
+          {% if page_obj.has_next %}
+    	    <a href="?page={{ page_obj.next_page_number }}"><button class="btn btn-outline-secondary btn-sm btn-page"><img class="page-arrow" src="{% static 'core/img/arrow-right.svg' %}" alt="right-arrow"></img></button></a> 
+          {% else %}
+    	    <button class="btn btn-outline-secondary disabled btn-sm btn-page" style='pointer-events:none;'><img class='page-arrow' src="{% static 'core/img/arrow-right.svg' %}" alt="left-arrow"></img></button></a> 
+          {% endif %}
+        {% endif %}
+    </span>
+</div>
+<script>
+  $(document).ready(function(){
+    $("#category-options").on('change', function()
+    {
+      var url = '/' + $(this).val().toLowerCase();
+      document.location.href = url;
+    });
+    $("#dpt-options").on('change', function()
+    {
+      if($(this).val().toLowerCase() == 'all') {
+        var url = '/'
+      } else {
+      	var url = '/department/' + $(this).val().toLowerCase();
+      }
+      document.location.href = url;
+    });
+	
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131405908-1"></script>
+    <script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-131405908-1');
+    </script>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="shortcut icon" href="{% static 'home/img/cp.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- js -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <script src="{% static 'home/js/active.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    <!-- this stuff powers the 'Switch' front-end component -->
+    <link href="{% static 'core/css/bootstrap-switch.css' %}" rel="stylesheet">
+    <script src="{% static 'core/js/bootstrap-switch.min.js' %}"></script>
+
+    <!-- MY CUSTOM STYLESHEET -->
+    <link rel="stylesheet" href="{% static 'home/css/frame.css' %}">
+
+
+    {% block includes %}
+    {% endblock %}
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+      <title>{% block title %}
+        Cal Poly Ratings
+      {% endblock %}</title>
+  </head>
+
+  <body style="min-height:100%; padding-top: 100px;padding-bottom:70px;font-family: 'Roboto', sans-serif;    background-color: #f5f5f5;position: relative;padding-top: 80px;">
+    <div id='top'></div>
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark"     style='background-color: #19652bf2!important;'>
+      <a class="navbar-brand" href="/">
+        <img id = 'nav-logo' src="{% static 'home/img/cp.png' %}">
+          Cal Poly Ratings
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav" style="margin-right: auto">
+            <li><a class="nav-item nav-link" href="{% url 'home'  %}">List</a></li>
+            <li><a class="nav-item nav-link" href="{% url 'add_professor'%}">Add Professor</a></li>
+
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+
+
+    {% endblock %}
+    {% block footer %}
+    <footer class="my_footer" id="footer" style="position: absolute;bottom: 0;width: 100%;">
+      <a href='{% url "contact" %}'><p class="footer_contact_link">Contact</p></a>
+      <a href='{% url "faq" %}'><p class="footer_contact_link">FAQ</p></a>
+    </footer>
+  {% endblock %}
+  
+  <span class="glyphicon glyphicon-chevron-up"></span>
+  <button onclick="ScrollTopFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up" onclick="ScrollTopFunction()"></i></button>
+
+  {% block btt_script %}
+    <script type="text/javascript">
+
+      window.onscroll = function() {scrollFunction()};
+      
+      function toggle_btt_btn() {
+	var scrollBottom = $(window).scrollTop() + $(window).height();
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200 ) {
+              document.getElementById("myBtn").style.display = "block";
+        } 
+  	else {
+              document.getElementById("myBtn").style.display = "none";
+          }
+	}
+
+      function scrollFunction() {
+          if($(window).scrollTop() + $(window).height() < $(document).height() - $(".my_footer").height()-40){
+                      $('#myBtn').css("position","fixed"); 
+                      $('#myBtn').css("bottom","20px"); //resetting it
+          }
+          else {
+                      $('#myBtn').css("bottom","60px"); // 60 px
+           }
+          toggle_btt_btn(); 
+      }
+
+
+      function ScrollTopFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+    </script>
+
+  {% endblock %}
+</body>
+
+</html>

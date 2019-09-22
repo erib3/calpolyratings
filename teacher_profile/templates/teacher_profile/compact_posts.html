@@ -1,0 +1,25 @@
+  <div id='append-to-this'>
+    {% if posts.count > 0 %}
+      {% for post in posts %}
+        {% if post.compact_text %}
+          <div class="row compact-post-div cpratings-bg">
+            <div class="col-md-12" style="margin-top: 10px;">
+              <div style="text-align:left;"><p class="cp_font_p">{{post.compact_text}}</p></div>
+
+            </div>
+
+          </div>
+        {% endif %}
+
+      {% endfor %}
+
+    {% else %}
+    <br>
+      <h5>No posts at the moment</h5>
+    {% endif %}
+  </div>
+
+{% if out_of_posts is not True %}
+	{% include 'teacher_profile/more_posts_btn.html' %}
+{% endif %}
+

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block includes %}
+<link rel="stylesheet" href="{% static 'postings/css/post_form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div style="max-width: 700px;
+    background-color: #ffffff; 
+    margin: auto;
+    padding-bottom: 20px;">
+<h2 style="text-align: center;">{{teacher}}</h2>
+<form action="{% url 'make_post' slug %}" method="post">
+  <div class="clean-form">
+    {% csrf_token %}
+    <!-- {{ form.as_p }} -->
+    <div class="form-group">
+      <label class="control-label" for="overall_grade">Teacher Grade</label>
+      <select class="form-control" name='overall_rating_num' id="overall_grade" style="width:30%;float:right;">
+        <option value="0">A+</option>
+
+        <option value=1>A</option>
+
+        <option value=2>A-</option>
+
+        <option value=3>B+</option>
+
+        <option value=4>B</option>
+
+        <option value=5>B-</option>
+
+        <option value=6>C+</option>
+
+        <option value=7>C</option>
+
+        <option value=8>C-</option>
+
+        <option value=9>D</option>
+
+        <option value=10>F</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="difficulty_rating">Difficulty Rating</label>
+      <select class="form-control" name='difficulty_rating' id="difficulty_rating" style="width:100px;float:right;">
+        <option value="1">1 - easy</option>
+
+        <option value="2">2</option>
+
+        <option value="3">3</option>
+
+        <option value="4">4</option>
+
+        <option value="5">5 - moderate</option>
+
+        <option value="6">6</option>
+
+        <option value="7">7</option>
+
+        <option value="8">8</option>
+
+        <option value="9">9</option>
+
+        <option value="10">10 - extreme</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="grade_received">Grade received</label>
+      <select class="form-control" name='grade_received' id="grade_received" style="width:30%;float:right;" required>
+        <option value="A+">A+</option>
+
+        <option value="A">A</option>
+
+        <option value="A-">A-</option>
+
+        <option value="B+">B+</option>
+
+        <option value="B">B</option>
+
+        <option value="B-">B-</option>
+
+        <option value="C+">C+</option>
+
+        <option value="C">C</option>
+
+        <option value="C-">C-</option>
+
+        <option value="D">D</option>
+
+        <option value="F">F</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Taken</label>
+        <input type="text" class="form-control" name="year_taken" placeholder="Year" style="max-width: 90px;float: right;">
+					<select class="form-control" name="quarter_taken" style='width: 100px;float: right;'>
+            <option value="Fall"> Fall</option>
+            <option value="Winter"> Winter</option>
+            <option value="Spring"> Spring</option>
+            <option value="Summer"> Summer</option>
+					</select>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Class</label>
+
+      <input type="text" class="form-control" placeholder="Number" name="course_num" style="max-width: 90px;float: right;">
+      <select class="form-control" name='course_abbrv' style='width: 100px;float: right;'>
+		{% for c in departments %}
+            <option value="{{c.abbreviation}}"> {{ c.abbreviation|capfirst }} </option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div style="padding-right: 15px;padding-left: 15px">
+
+     <div class="form-group" style="max-width: 591px;margin: auto;">
+      <label for="exampleFormControlTextarea1">Short review for {{teacher}}  <span style='margin-left:5px;'>(optional)</span></label>
+      <textarea class="form-control" style="height: 70px;" name='compact_text' rows="3"></textarea>
+    </div>
+    <br>
+    <div class="form-group" style="max-width: 591px;margin: auto;">
+      <label for="exampleFormControlTextarea1">Post / Review</label>
+      <textarea class="form-control" style="height: 250px;" name='post' rows="3"></textarea>
+    </div>
+    <br>
+    <script type="text/javascript"> 
+      function onHuman(response) { 
+        document.getElementById('captcha').value = response; 
+      } 
+    </script>
+    <div style='margin: 0 auto;width: 275px;'>
+    <div class="g-recaptcha" data-callback="onHuman" data-theme="dark" style="transform:scale(0.89);
+    transform-origin:0 0;" data-sitekey="6Le4q4QUAAAAAHqoRhibZ4xHM4qQCZFsn2-vWSpa"></div>
+    </div>
+    <input type="hidden" id="captcha" name="captcha" value="">
+
+    <div class="form-group" style="max-width: 591px;margin: auto;">
+      <button class='btn btn-dark btn-block' type='submit'>Submit</button>
+    </div>
+  </div>
+</form>
+</div>
+{% endblock %}
+
+

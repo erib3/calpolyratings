@@ -1,0 +1,8 @@
+*venv/
+extras/
+*secrets.json
+*.pyc
+*.swp
+static/
+__pycache__
+

@@ -1,0 +1,55 @@
+{% load teacher_profile_filters %}
+<div id='append-to-this'>
+    {% if posts %}
+        {% for post in posts %}
+          {% if post.polyratings_post %}
+            <div class="row full-post-div cpratings-bg">
+            <div class="col-md-3 grades">
+                <div>
+                  <p class='cp_font_p m_p'> polyratings post</p>
+                  <p class='cp_font_p m_p tp_course'>{{ post.course_abbrv }} {{post.course_num}} </p>
+                  <p class='cp_font_p m_p'>Grade Received: {{ post.grade_received|default_if_none:"unknown"}}</p>
+
+                  <p class='cp_font_p m_p tp_posted'> posted {{post.year_taken}}</p>
+                </div>
+              </div>
+              <div class="col-md-9" style="margin-top: 10px;border-left-style: solid;border-left-width: 1.5px;">
+
+                <div class='cp_font_p'>
+                  {{post.post | linebreaks}}
+                </div>
+
+              </div>
+
+            </div>
+          {% else %}
+            <div class="row full-post-div cpratings-bg">
+            <div class="col-md-3 grades">
+                <div>
+                  <p class='cp_font_p m_p'> Teacher Grade: {{post.overall_rating_num | toLetterGrade}} </p>
+                  <p class='cp_font_p m_p'> Difficulty Grade: {{post.difficulty_rating}}/10</p>
+                  <p class='cp_font_p m_p tp_course'>{{ post.course_abbrv }} {{post.course_num}} </p>
+                  <p class='cp_font_p m_p'>Grade Received: {{ post.grade_received }}</p>
+
+                  <p class='cp_font_p m_p tp_posted'> posted {{post.created.year}}</p>
+                </div>
+              </div>
+              <div class="col-md-9" style="margin-top: 10px;border-left-style: solid;border-left-width: 1.5px;">
+                <div class='cp_font_p'>
+                  {{post.post | linebreaks}}
+                </div>
+
+              </div>
+
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <br>
+        <h5>No posts at the moment</h5>
+    {% endif %}
+</div>
+ {% if out_of_posts is not True %}
+        {% include 'teacher_profile/more_posts_btn.html' %}
+ {% endif %}
+

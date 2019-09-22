@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block includes %}
+<link rel="stylesheet" href="{% static 'postings/css/post_form.css' %}">
+{% endblock %}
+{% block content %}
+<!-- <div class="container-fluid"> -->
+  <form action="#" method="post">
+    <div class="container" style="text-align: center;">
+      <h3> Add a Teacher</h3>
+    </div>
+    <div class="clean-form_teacher">
+      {% csrf_token %}
+      <div class="form-group">
+        <p><input class="form-control" type="text" name="first_name" required maxlength="30" id="id_first_name" placeholder="First name"></p>
+      </div>
+      <div class="form-group">
+        <p><input class="form-control" type="text" name="last_name" required maxlength="30" id="id_last_name" placeholder="Last name"></p>
+      </div>
+      <div class="form-group">
+	<select class='form-control' name="department" id="id_department" required="">
+		<option value='-1'> Department </option>
+		{% for c in form.fields.department.queryset %}
+			<option value="{{c.id}}"> {{ c.name|capfirst }} </option>
+		{% endfor %}
+	</select>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function onHuman(response) {
+        document.getElementById('captcha').value = response;
+      }
+    </script>
+    <div style='margin: 0 auto;width: 275px;'>
+    <div class="g-recaptcha" data-callback="onHuman" data-theme="dark" style="transform:scale(0.89);
+    transform-origin:0 0;" data-sitekey="6Le4q4QUAAAAAHqoRhibZ4xHM4qQCZFsn2-vWSpa"></div> 
+    </div>
+    <input type="hidden" id="captcha" name="captcha" value="">
+
+    <div class="container" style="text-align: center;margin-top: 10px;">
+      <button class='btn btn-dark' type='submit'>Submit</button>
+    </div>
+  </form>
+
+
+{% endblock %}
