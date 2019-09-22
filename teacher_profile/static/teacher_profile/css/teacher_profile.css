@@ -1,0 +1,56 @@
+  @media (max-width: 352px) {
+   #nice-mode-div {
+     width: 150px !important;
+   }
+  } 
+ 
+  @media (max-width: 766px) {
+    .tp_posted {
+      position: absolute;
+      float: right;
+      top: 17px;
+      right: 10px;
+    }
+    .tp_course {
+      position: absolute;
+      float: right;
+      top: 0;
+      right: 10px;
+    }
+
+  }
+
+.cpratings-bg {
+  background-color: #92fd8c1a;
+}
+
+.compact-post-div {
+  border-top-style: solid;
+  border-bottom-style: solid;
+  padding-top: 7px;
+  border-bottom-width: 1px;
+  padding-bottom: 3px;
+  border-top-width: 1px;
+  border-radius: 4px;
+  margin-bottom: 38px;
+}
+
+
+.full-post-div {
+  
+  border-top-style: solid;
+  border-bottom-style: solid;
+  padding-top: 7px;
+  border-bottom-width: 1px;
+  padding-bottom: 13px;
+  border-top-width: 1px;
+  border-radius: 4px;
+  margin-bottom: 38px;
+}
+
+#nice-mode-label {
+  display:  inline-block;
+  margin-bottom: 0px;
+  font-size:  11pt;
+  margin-top: 17px;
+}

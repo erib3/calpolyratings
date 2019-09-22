@@ -1,0 +1,56 @@
+@media (max-width: 519px) {
+  .mobile-stuff {
+    width: 70% !important;
+  }
+}
+
+@media (max-width: 657px) {
+  .container {
+    max-width: 100%;
+  }
+}
+@media (max-width: 390px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #27272747;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem #83afde9c;
+}
+.form-signin {
+  max-width: 330px;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 13px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin input[type="password"] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#teacher_list {
+  background-color: #ffffffff;
+}
+
+.item-border {
+  border-width: 0.35rem;
+  border-style: solid;
+  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}

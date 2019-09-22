@@ -1,0 +1,181 @@
+
+@media (min-width: 1193px) {
+  .cont-list {
+    max-width: 1000px !important;
+  }
+}
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+  overflow-y: scroll;
+}
+
+.btn-outline-secondary {
+  border-color: #198431;
+}
+.btn-page {
+ width: 65px;
+}
+.page-arrow {
+ width: 25px;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 98;
+    border: none;
+    outline: none;
+    background-color: #545d638a;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 14px;
+}
+
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+/* sign up and log in btns*/
+
+.btn_cus {
+  width: 85px;
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+/* size search icon*/
+#search-icon {
+  width: 35px;
+}
+
+/* for br logo img */
+#nav-logo {
+  width: 40px;
+}
+
+/* 'Signed in as {{user}} */
+.dropdown-header {
+  text-align: center;
+  font-size: .8rem;
+}
+
+/* for drop down menu */
+.dropdown-menu {
+  font-size: .8rem;
+}
+
+/*switch up mobile toggle button outline */
+.navbar-dark .navbar-toggler {
+  border-color: unset;
+}
+
+/* size navbar toggler*/
+.navbar-toggler {
+  padding: .15rem .5rem;
+  font-size: 1rem;
+}
+
+.navbar-toggler-icon {
+  width: 1em;
+  height: 1em;
+}
+
+/* control navbar sizing*/
+.navbar {
+  padding: .45rem 1rem;
+}
+
+.container {
+  max-width: 90%;
+}
+.adv-img {
+  display: block;
+  margin: auto;
+  width: 120px;
+}
+
+.adv-title {
+  text-align: center;
+}
+
+#why_use {
+  color: #4d4d4d;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.section-1 {
+  padding-bottom: 20px;
+}
+.section-2 {
+  padding: 40px 0;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.pricing-block {
+  text-align: center;
+}
+
+/*taken from RI site*/
+
+.card1-text {
+  padding:0px 15px 15px 15px;
+  font-size: 12.5pt;
+}
+
+
+.card-1 {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 80%;
+  margin:auto;
+  min-height: 400px;
+  text-align: center;
+  border-radius: 10px;
+
+}
+.card-1:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.0);
+}
+
+.services-image {
+  height: 150px;
+  padding-top: 15px;
+}
+
+#ipblock {
+  color: white;
+  border-color: black;
+  border-radius: 5px;
+}
+
+.alert {
+  margin-bottom: 0px;
+  border: none;
+  padding: .4rem 1.25rem;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.64);
+}
+.my_footer {
+    background-color: #252525;
+    height:51px;
+    margin-top: 13px;
+}
+
+.footer_contact_link {
+  color: white;
+  float: right;
+  padding-right: 20px;
+  margin-top: .7rem;
+}
+.navbar-dark .navbar-nav .active>.nav-link {
+  color:#0c0b0bc7;
+}

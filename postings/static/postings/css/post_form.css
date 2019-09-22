@@ -1,0 +1,185 @@
+@media (min-width: 576px) { 
+}
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+/* sign up and log in btns*/
+.btn_cus {
+  width: 85px;
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+/* size search icon*/
+#search-icon {
+  width: 35px;
+}
+
+/* for br logo img */
+#nav-logo {
+  width: 40px;
+}
+
+/* 'Signed in as {{user}} */
+.dropdown-header {
+  text-align: center;
+  font-size: .8rem;
+}
+
+/* for drop down menu */
+.dropdown-menu {
+  font-size: .8rem;
+}
+
+/*switch up mobile toggle button outline */
+.navbar-dark .navbar-toggler {
+  border-color: unset;
+}
+
+/* size navbar toggler*/
+.navbar-toggler {
+  padding: .15rem .5rem;
+  font-size: 1rem;
+}
+
+.navbar-toggler-icon {
+  width: 1em;
+  height: 1em;
+}
+
+/* control navbar sizing*/
+.navbar {
+  padding: .45rem 1rem;
+}
+
+.container {
+  max-width: 80% !important;
+}
+.btn-dark:not(:disabled):not(.disabled).active, .btn-dark:not(:disabled):not(.disabled):active, .show>.btn-dark.dropdown-toggle {
+    color: #fff;
+    background-color: #155724
+}
+.btn-dark.focus {
+  box-shadow: none;
+}
+.btn-stretch {
+  width:88px;
+}
+.adv-img {
+  display: block;
+  margin: auto;
+  width: 120px;
+}
+
+.adv-title {
+  text-align: center;
+}
+
+#why_use {
+  color: #4d4d4d;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.section-1 {
+  padding-bottom: 20px;
+}
+.section-2 {
+  padding: 40px 0;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.pricing-block {
+  text-align: center;
+}
+
+/*taken from RI site*/
+
+.card1-text {
+  padding:0px 15px 15px 15px;
+  font-size: 12.5pt;
+}
+
+
+.card-1 {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 80%;
+  margin:auto;
+  min-height: 400px;
+  text-align: center;
+  border-radius: 10px;
+
+}
+.card-1:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.0);
+}
+
+.services-image {
+  height: 150px;
+  padding-top: 15px;
+}
+
+#ipblock {
+  color: white;
+  border-color: black;
+  border-radius: 5px;
+}
+
+.alert {
+  margin-bottom: 0px;
+  border: none;
+  padding: .4rem 1.25rem;
+}
+
+.btn-cus {
+  width: 90%;
+}
+.signup_errors {
+  float:right;
+  color:red;
+}
+.form-register{
+  max-width: 330px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.clean-form {
+  max-width: 630px;
+  padding: 20px 20px 5px 20px;
+  margin: 0 auto;
+}
+.clean-form_teacher {
+  max-width: 330px;
+  padding: 20px 20px 5px 20px;
+  margin: 0 auto;
+}
+
+.control-label {
+  padding-top: 10px;
+}
+.form-signin {
+  max-width: 330px;
+  padding: 20px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 13px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin input[type="password"] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

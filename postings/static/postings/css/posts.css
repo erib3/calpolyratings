@@ -1,0 +1,12 @@
+@media (max-width: 766px) {
+        div.grades {
+                margin-top: 3px;
+        }
+}
+
+.grades {
+        margin-top: 8px;
+        padding-right:0px;
+        padding-left:15px;
+}
+

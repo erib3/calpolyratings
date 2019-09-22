@@ -1,0 +1,78 @@
+.btn-cus {
+  width: 90%;
+}
+
+.teacher-btn {
+  display:block;
+  width: 100%;
+  text-align: left;
+  margin: auto;
+  margin-bottom:20px;
+
+}
+
+.btn-outline-secondary:hover {
+    border-color: #518e5f;
+}
+.profile-btn:not(:disabled):not(.disabled) {
+    cursor: default;
+}
+
+.btn-outline-secondary:focus {
+     /*box-shadow: 0 0 0 0.2rem rgba(108,117,125,.5); */
+     box-shadow: none;
+}
+.btn.focus, .btn:focus {
+    outline: 0;
+     /*box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); */
+     box-shadow: none;
+}
+
+/*.btn-dark:not(:disabled):not(.disabled):active {
+  background-color: #155724 !important;
+}
+.qtr-btn:not(:disabled):not(.disabled).active, .qtr-btn:not(:disabled):not(.disabled):active {
+  background-color: #155724 !important;
+
+}*/
+.profile-btn {
+  /*outline: 1;*/
+  /*box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);*/
+}
+
+.teacher-rating {
+  float:right;
+}
+
+.btn-stack {
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
+
+.btn-stack-list-style {
+  list-style-type: none;
+}
+
+.evals-span {
+  float:right;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #005000b3;
+}
+
+.btn-outline-secondary {
+  color: #222222;
+}
+
+.nice-p {
+  margin-bottom: 0px;
+}
+.cp_font_p {
+  font-size: 10pt;
+  
+}
+
+.m_p {
+  margin: 0;
+}
