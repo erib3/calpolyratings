@@ -9,57 +9,27 @@
 {% endblock %}
 {% block content %}
 
-<div class='container-fluid'>
-  <form class="form-signin" method='get' action='/' >
-    <div class="row">
-      <div class="col-xs-9 mobile-stuff" style="padding-left: 0px;padding-right: 0px;">
-        <input type="text" name='q' id="id_search" class="form-control"  style="min-width:170px;border-radius: .25rem 0rem 0rem .25rem;" required autofocus>
-      </div>
-      <div class="col-xs-3" style="padding-left: 0px;padding-right: 0px;">
-        <button class="btn btn-dark" id='search-btn' type="submit" style="border-radius: 0rem .25rem .25rem 0rem;">Search</button>
-      </div>
-    </div>
-
-
-  </form>
-</div>
-
-<div class='container-fluid'>
-  <form class="form-signin" method='get' action='' style='padding-top: 0px;'>
-
-    <div class="row">
-	<div class="col-sm-12">
-	<span style="
-       	/* margin-top: 50px; */
-    	padding-left: 66px;
-    	padding-top: 8px;
-    	display: inline-block;
-	">Department</span>
-        <select id="dpt-options" class="form-control" name="options" style="width: 100px;float: right;">
-          {% if selection %}
-            <option selected value='{{selection.slug}}'> {{selection.abbreviation|capfirst }} </option>
-            <option value='all'>All</option>
-          {% else %}
-            <option selected value='all'>All</option>
-	  {% endif %}
-
-	  {% for c in departments %}
-            <option value="{{c.slug}}"> {{ c.abbreviation|capfirst }} </option>
-          {% endfor %}
-
-        </select>
-	</div>
-      </div>
-
-      </select>
-    </div>
-
-
-  </form>
-</div>
 <div class="container cont-list" id="teacher_list" style="padding-bottom: 5px;">
   <br>
+  <form method="get" action="" style="padding-top: 0px;max-width:223px;">
+    <span style="padding-top: 8px;display: inline-block;">
+      Department
+    </span>
+    <select id="dpt-options" class="form-control" name="options" style="width: 100px;float: right;">
+      {% if selection %}
+        <option selected value='{{selection.slug}}'> {{selection.abbreviation|capfirst }} </option>
+        <option value='all'>All</option>
+      {% else %}
+        <option selected value='all'>All</option>
+      {% endif %}
 
+      {% for c in departments %}
+        <option value="{{c.slug}}"> {{ c.abbreviation|capfirst }} </option>
+      {% endfor %}
+
+    </select>
+  </form>
+  <br>
   <div id='small-teacher-profile-list-block'>
   {% if teacher_profiles %}
     {% for profile in teacher_profiles %}
