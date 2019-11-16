@@ -21,7 +21,9 @@
   }
 
 .cpratings-bg {
-  background-color: #92fd8c1a;
+  /*background-color: #d0cece1a;
+  background-color: #18dcff0d;*/
+  background-color: #0adaff05;
 }
 
 .compact-post-div {
@@ -31,11 +33,11 @@
   border-bottom-width: 1px;
   padding-bottom: 3px;
   border-top-width: 1px;
-  border-radius: 4px;
+  border-radius: 2px;
   margin-bottom: 38px;
 }
 
-
+/* TODO: these css classes are the same... */
 .full-post-div {
   
   border-top-style: solid;
@@ -44,7 +46,7 @@
   border-bottom-width: 1px;
   padding-bottom: 13px;
   border-top-width: 1px;
-  border-radius: 4px;
+  border-radius: 2px;
   margin-bottom: 38px;
 }
 
