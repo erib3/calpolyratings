@@ -26,22 +26,9 @@
   background-color: #0adaff05;
 }
 
-.compact-post-div {
-  border-top-style: solid;
-  border-bottom-style: solid;
-  padding-top: 7px;
-  border-bottom-width: 1px;
-  padding-bottom: 3px;
-  border-top-width: 1px;
-  border-radius: 2px;
-  margin-bottom: 38px;
-}
 
-/* TODO: these css classes are the same... */
-.full-post-div {
-  
+.post-div {
   border-top-style: solid;
-  border-bottom-style: solid;
   padding-top: 7px;
   border-bottom-width: 1px;
   padding-bottom: 13px;
@@ -50,7 +37,7 @@
   margin-bottom: 38px;
 }
 
-#nice-mode-label {
+#mode-label {
   display:  inline-block;
   margin-bottom: 0px;
   font-size:  11pt;
