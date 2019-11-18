@@ -3,7 +3,7 @@
     {% if posts %}
         {% for post in posts %}
           {% if post.polyratings_post %}
-            <div class="row full-post-div cpratings-bg">
+            <div class="row post-div cpratings-bg">
             <div class="col-md-3 grades">
                 <div>
                   <p class='cp_font_p m_p'> polyratings post</p>
@@ -23,7 +23,7 @@
 
             </div>
           {% else %}
-            <div class="row full-post-div cpratings-bg">
+            <div class="row post-div cpratings-bg">
             <div class="col-md-3 grades">
                 <div>
                   <p class='cp_font_p m_p'> Teacher Grade: {{post.overall_rating_num | toLetterGrade}} </p>
