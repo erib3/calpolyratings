@@ -49,11 +49,5 @@ class HomeView(ListView):
       return context
 
 
-# View for FAQ page
-class Faq(TemplateView):
-  template_name = 'home/faq.html'
-
-class Contact(TemplateView):
-  template_name = 'home/contact.html'
 
 
