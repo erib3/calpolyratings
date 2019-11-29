@@ -22,7 +22,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'www.calpolyratings.com','calpolyratings.com', '159.89.142.74']
+ALLOWED_HOSTS = ['localhost', 'www.calpolyratings.com','calpolyratings.com', '173.236.174.186']
 #'www.calpolyratings.com', 'calpolyratings.com',
 
 # Application definition
@@ -76,14 +76,22 @@ WSGI_APPLICATION = 'cpratings.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = { 
+'''DATABASES = { 
     'default': { 
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'cpratings', 
-        'USER': 'root', 
-        'PASSWORD': get_secret('SQL_PW') 
+        'USER': 'eribe', 
+        'PASSWORD': get_secret('SQL_PW'),
+        'HOST': 'mysql.test.jj-jj.org',
+        'PORT': '3306',
     } 
- 
+}
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 
@@ -112,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
@@ -125,15 +133,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.dirname(BASE_DIR) + '/public/static/'
 
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'cpratings@gmail.com'
-EMAIL_HOST_PASSWORD = get_secret("EMAIL_PW")
+EMAIL_HOST = 'smtp.dreamhost.com'
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465 
+EMAIL_HOST_USER = get_secret("OUT_EMAIL")
+EMAIL_HOST_PASSWORD = get_secret("OUT_EMAIL_PW")
 
 
 RECAPTCHA_PUBLIC_KEY = '6Le4q4QUAAAAAHqoRhibZ4xHM4qQCZFsn2-vWSpa'
