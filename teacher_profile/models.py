@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.validators import RegexValidator
+from django.conf import settings
 
 from department_courses.models import Department, Course
 from cpratings.use_secrets import *
@@ -38,7 +39,8 @@ class Teacher_profile(models.Model):
 
 @receiver(post_save, sender=Teacher_profile)
 def send_email(sender, **kwargs):
-  print(kwargs)
-  if kwargs['instance'].evaluations == 0:
-    msg = 'Hi there, a new teacher was added to the site \n' + kwargs['instance'].__str__() + ' -- ' + kwargs['instance'].department.__str__()
-    send_mail('A new teacher !', msg, 'cpratings', [get_secret("EMAIL")], fail_silently=False)
+    if settings.DEBUG: 
+        return
+    if kwargs['instance'].evaluations == 0:
+        msg = 'Hi there, a new teacher was added to the site \n' + kwargs['instance'].__str__() + ' -- ' + kwargs['instance'].department.__str__()
+        send_mail('A new teacher !', msg, get_secret("OUT_EMAIL"), [get_secret("ADMIN_EMAIL")], fail_silently=False)

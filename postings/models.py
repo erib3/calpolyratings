@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.core.mail import send_mail
 from django.dispatch import receiver
+from django.conf import settings
 
 from model_utils import FieldTracker
 from core.models import TimeStampModel
@@ -78,10 +79,13 @@ class Post(TimeStampModel):
 
 @receiver(post_save, sender=Post)
 def send_email(sender, **kwargs):
-  post = "compact post \n\n" + kwargs['instance'].compact_text.__str__() + "\n\n full post \n\n" + kwargs['instance'].post.__str__()
-  msg = 'A new post was submitted for ' + kwargs['instance'].teacher.__str__() + " " + 'it reads \n\n' + post
-  send_mail('A new post !', msg, 'cpratings',
-    [get_secret("EMAIL")], fail_silently=False)
+    if settings.DEBUG:
+        return
+    post = "compact post \n\n" + kwargs['instance'].compact_text.__str__() + "\n\n full post \n\n" + kwargs['instance'].post.__str__()
+    # TODO: make this msg better
+    msg = 'A new post was submitted for ' + kwargs['instance'].teacher.__str__() + " " + 'it reads \n\n' + post
+    send_mail('A new post!', msg, get_secret("OUT_EMAIL"), [get_secret("ADMIN_EMAIL")], fail_silently=False)
+
 
 @receiver(post_save, sender=Post)
 def update_fields_save(sender, **kwargs):
