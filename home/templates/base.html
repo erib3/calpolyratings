@@ -93,43 +93,6 @@
 
     {% endblock %}
   
-  <span class="glyphicon glyphicon-chevron-up"></span>
-  <button onclick="ScrollTopFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up" onclick="ScrollTopFunction()"></i></button>
-
-  {% block btt_script %}
-    <script type="text/javascript">
-
-      window.onscroll = function() {scrollFunction()};
-      
-      function toggle_btt_btn() {
-	var scrollBottom = $(window).scrollTop() + $(window).height();
-        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200 ) {
-              document.getElementById("myBtn").style.display = "block";
-        } 
-  	else {
-              document.getElementById("myBtn").style.display = "none";
-          }
-	}
-
-      function scrollFunction() {
-          if($(window).scrollTop() + $(window).height() < $(document).height() - $(".my_footer").height()-40){
-                      $('#myBtn').css("position","fixed"); 
-                      $('#myBtn').css("bottom","20px"); //resetting it
-          }
-          else {
-                      $('#myBtn').css("bottom","60px"); // 60 px
-           }
-          toggle_btt_btn(); 
-      }
-
-
-      function ScrollTopFunction() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-      }
-    </script>
-
-  {% endblock %}
 </body>
 
 </html>
