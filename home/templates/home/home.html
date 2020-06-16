@@ -33,7 +33,7 @@
   <div id='small-teacher-profile-list-block'>
   {% if teacher_profiles %}
     {% for profile in teacher_profiles %}
-      <a href=/{{profile.slug}} style='text-decoration: none;'><button type="button" class="btn btn-outline-secondary teacher-btn" style="border-left-width: 9px;"> <span class='teacher-rating'>{{profile.overall_rating | toLetterGrade}}</span>{{profile.first_name}} {{profile.last_name}}<small><ul class='btn-stack'><li class='btn-stack-list-style'><span><span class='evals-span'><strong>{{profile.evaluations}}</strong> eval{{ profile.evaluations|pluralize }}</span>{{profile.department}}</span></li></ul></small></button></a>
+      <a href=/{{profile.slug}} style='text-decoration: none;'><button type="button" class="btn btn-outline-secondary teacher-btn" style="border-left-width: 9px;">{{profile.first_name}} {{profile.last_name}}<small><ul class='btn-stack'><li class='btn-stack-list-style'><span><span class='evals-span'><strong>{{profile.evaluations}}</strong> eval{{ profile.evaluations|pluralize }}</span>{{profile.department}}</span></li></ul></small></button></a>
 
     {% endfor %}
   {% else %}

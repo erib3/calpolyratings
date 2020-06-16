@@ -16,8 +16,7 @@
 <div class="container cont-list" id="teacher_list" style="padding-bottom: 10px;">
   <br>
 
-  <button type="button" class="btn btn-outline-secondary profile-btn teacher-btn" style="pointer-events:none;"> <span class='teacher-rating'>{{profile.overall_rating | toLetterGrade}}</span>{{profile.first_name}} {{profile.last_name}}<small><ul class='btn-stack'><li class='btn-stack-list-style'><span class='evals-span'>{{profile.overall_difficulty|formatDifficultyGrade}}</span><span style="visibility: hidden">{{profile.department}}</span></li></ul></small>
-  <small><ul class='btn-stack'><li class='btn-stack-list-style'><span class='evals-span'><strong>{{profile.evaluations}}</strong> eval{{ profile.evaluations|pluralize }}</span><span>{{profile.department}}</span></li></ul></small>
+  <button type="button" class="btn btn-outline-secondary profile-btn teacher-btn" style="pointer-events:none;"> {{profile.first_name}} {{profile.last_name}}<small><ul class='btn-stack'><li class='btn-stack-list-style'><span class='evals-span'><strong>{{profile.evaluations}}</strong> eval{{ profile.evaluations|pluralize }}</span><span>{{profile.department}}</span></li></ul></small>
   </button>
 
 
